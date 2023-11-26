@@ -1,0 +1,2 @@
+# EasyLog
+Easy powershell logger
