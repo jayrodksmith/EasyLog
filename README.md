@@ -26,6 +26,8 @@ $easylogDownloadFile = ('{0}\easylog.zip' -f $ENV:Temp)
         $null = New-Item -Path $easylogExtractionPath -ItemType Directory -Force
     }
 Invoke-WebRequest -Uri $easylogDownloadZip -OutFile $easylogDownloadFile
+Expand-Archive -Path $easylogDownloadFile -DestinationPath $ENV:Temp -Force
+Copy-Item -Path "$ENV:Temp\EasyLog-main\*" -Destination $easylogExtractionPath -Force
 Expand-Archive -Path $easylogDownloadFile -DestinationPath $easylogExtractionPath -Force
 Remove-Item -Path $easylogDownloadFile -Force
 ```
