@@ -27,12 +27,41 @@ $easylogDownloadFile = ('{0}\easylog.zip' -f $ENV:Temp)
     }
 Invoke-WebRequest -Uri $easylogDownloadZip -OutFile $easylogDownloadFile
 Expand-Archive -Path $easylogDownloadFile -DestinationPath $ENV:Temp -Force
-Copy-Item -Path "$ENV:Temp\EasyLog-main\*" -Destination $easylogExtractionPath -Force
-Expand-Archive -Path $easylogDownloadFile -DestinationPath $easylogExtractionPath -Force
+Copy-Item -Path "$ENV:Temp\EasyLog-main\*" -Destination $easylogExtractionPath -Recurse -Force
 Remove-Item -Path $easylogDownloadFile -Force
+Remove-Item -Path "$ENV:Temp\EasyLog-main" -Recurse -Force
 ```
 
 ### Quick start
+Starting a Log
 
+```powershell
+Start-EasyLog -EasyLogFile 'C:\ProgramData\EasyLog\TestLog.log' -EasyLogRMM 'None' -EasyLogDescription 'TestName'
+```
+Writing a Log
+
+```powershell
+Write-EasyLog -Message "Test Message" -Messagetype 'Silent'
+```
+Writing a Log Error
+
+```powershell
+Write-EasyLogError -Message "Test Message" -Messagetype 'Verbose'
+```
+Writing a Log Warning
+
+```powershell
+Write-EasyLogWarning -Message "Test Message" -Messagetype 'Silent'
+```
+Stopping a Log
+
+```powershell
+Stop-EasyLog -Message "Test Message" -Messagetype 'Silent'
+```
+Clearing log retention
+
+```powershell
+Clear-EasyLog -Retention 30
+```
 ## Author
 Jared Smith
