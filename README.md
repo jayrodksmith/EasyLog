@@ -16,7 +16,7 @@ $easylogrepo = "https://github.com/$githubrepo"
 $releases = "https://api.github.com/repos/$githubrepo/releases"
 $easyloglatestversion = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
 $easylogExtractionPath = (Join-Path -Path "C:\Program Files\WindowsPowerShell\Modules\EasyLog" -ChildPath $easyloglatestversion)
-$easylogDownloadZip = ('{0}/archive/main.zip' -f $niaupdaterRepo)
+$easylogDownloadZip = ('{0}/archive/main.zip' -f $easylogrRepo)
 $easylogDownloadFile = ('{0}\easylog.zip' -f $ENV:Temp)
 # Create the niaupdater folder if it doesn't exist 
     if (-not (Test-Path -Path $easylogExtractionPath)) {
