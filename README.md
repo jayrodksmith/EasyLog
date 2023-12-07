@@ -33,6 +33,4 @@ Remove-Item -Path $easylogDownloadFile -Force
 ### Quick start
 
 ## Author
-
 Jared Smith
-
