@@ -27,7 +27,12 @@ $easylogDownloadFile = ('{0}\easylog.zip' -f $ENV:Temp)
     }
 Invoke-WebRequest -Uri $easylogDownloadZip -OutFile $easylogDownloadFile
 Expand-Archive -Path $easylogDownloadFile -DestinationPath $easylogExtractionPath -Force
-Remove-Item -Path $easylogDownloadFile -Force
+$extractedFolderPath = Join-Path -Path $EasyWarrantyCheckExtractionPath -ChildPath "EasyLog-Main"
+# Move all files from the extracted folder to the root
+Get-ChildItem -Path $extractedFolderPath | Move-Item -Destination $EasyLogExtractionPath
+# Optional: Remove the empty extracted folder
+Remove-Item -Path $extractedFolderPath -Force
+Remove-Item -Path $EasyWarrantyCheckDownloadFile -Force
 ```
 
 ### Quick start
