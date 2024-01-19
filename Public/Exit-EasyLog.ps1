@@ -26,8 +26,8 @@ function Exit-EasyLog {
         [ValidateSet('Verbose','Debug','Silent')]
         [Parameter(Mandatory = $false)]
         [string]$messagetype = 'Silent',
-        [Parameter(Mandatory = $true)]
-        [int]$ExitCode = 0
+        [Parameter(Mandatory = $false)]
+        [int]$ExitCode,
     )
     # Set NewLine Variable
     $nl = [System.Environment]::NewLine
@@ -42,5 +42,7 @@ function Exit-EasyLog {
         Write-Debug "Errors : $ErrorCount"
     }
     Clear-EasyLog
-    Exit $ExitCode
+    if($ExitCode){
+        Exit $ExitCode
+    }
 }

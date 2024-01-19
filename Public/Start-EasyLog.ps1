@@ -32,7 +32,7 @@ function Start-EasyLog {
         [Parameter(Mandatory = $false)]
         [ValidateSet('NinjaRMM', 'None')]
 		[String]$EasyLogRMM='None',
-        [ValidateSet('NinjaRMM', 'None')]
+        [Parameter(Mandatory = $false)]
 		[String]$EasyLogDescription='EasyLog',
         [Parameter(Mandatory = $false)]
 		[String]$datetimeformat='dd-MM-yyyy HH:mm:ss',
